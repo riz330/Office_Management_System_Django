@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remove Employee</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div class="w-full max-w-2xl bg-white p-10 rounded-lg shadow-lg">
+        <h1 class="text-3xl font-bold text-gray-800 mb-6">Remove Employee</h1>
+        
+        <form action="" method="POST" class="space-y-6">
+            {% csrf_token %}
+            <label class="block text-gray-700 font-semibold">Select Employee</label>
+            <select name="emp_id" class="w-full p-3 border border-gray-300 rounded-lg" required>
+                {% for emp in employees %}
+                    <option value="{{ emp.id }}">{{ emp.first_name }} {{ emp.last_name }} (ID: {{ emp.id }})</option>
+                {% endfor %}
+            </select>
+            
+            <button type="submit" class="bg-red-600 text-white px-6 py-3 rounded-lg text-lg font-semibold hover:bg-red-700 shadow-md">
+                Remove Employee
+            </button>
+        </form>
+    </div>
+</body>
+</html>
